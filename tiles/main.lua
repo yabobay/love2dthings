@@ -8,16 +8,8 @@ end
 
 function love.load()
 
-  pixels = {
-    {0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0},
-    {0,1,1,0,0,1,1,0},
-    {0,1,1,0,0,1,1,0},
-    {0,0,0,1,1,0,0,0},
-    {0,0,1,1,1,1,0,0},
-    {0,0,1,1,1,1,0,0},
-    {0,0,1,0,0,1,0,0}
-  }
+  dofile("pixels.lua")
+  pixels = gallery["creeper"]
 
   love.window.setMode(500, 500)
   columnsize = love.graphics.getWidth()
