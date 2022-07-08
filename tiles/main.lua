@@ -1,6 +1,8 @@
+dofile("pixels.lua")
+
 function length(x)
   local l = 0
-  for i in ipairs(x) do
+  for i in pairs(x) do
     l = l + 1
   end
   return l
@@ -8,13 +10,8 @@ end
 
 function love.load()
 
-  dofile("pixels.lua")
-  pixels = gallery["creeper"]
-
   love.window.setMode(500, 500)
-  columnsize = love.graphics.getWidth()
-  rowsize = love.graphics.getHeight() / length(pixels)
-
+  loadPixels()
   party = false
 
 end
@@ -39,7 +36,9 @@ end
 
 function love.keypressed(key, code, rep)
   -- switches on or off party mode
-  if key == "p" then
+  if key == "space" then
+    loadPixels()
+  elseif key == "p" then
     if party then
       party = false
     else
