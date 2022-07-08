@@ -5,7 +5,7 @@ function love.load()
 
   love.window.setMode(500, 500)
   loadPixels()
-  party = false
+  party = true
 
 end
 
