@@ -1,5 +1,3 @@
-dofile("utility.lua")
-
 gallery = {
   creeper = {
     {0,0,0,0,0,0,0,0},

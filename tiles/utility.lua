@@ -12,3 +12,11 @@ function compareTables(x, y)
     return true
   end
 end
+
+function length(x)
+  local l = 0
+  for i in pairs(x) do
+    l = l + 1
+  end
+  return l
+end

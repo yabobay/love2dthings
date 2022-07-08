@@ -1,12 +1,5 @@
 dofile("pixels.lua")
-
-function length(x)
-  local l = 0
-  for i in pairs(x) do
-    l = l + 1
-  end
-  return l
-end
+dofile("utility.lua")
 
 function love.load()
 
