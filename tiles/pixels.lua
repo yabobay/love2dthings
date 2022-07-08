@@ -67,7 +67,7 @@ function loadPixels(x)
     choice = gallery[x]
   end
   pixels = choice[1]
-  love.window.setTitle(choice[2])
+  love.window.setTitle(capitalize(choice[2]))
   columnsize = love.graphics.getWidth()
   rowsize = love.graphics.getHeight() / length(pixels)
   last = choice

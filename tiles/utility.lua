@@ -20,3 +20,9 @@ function length(x)
   end
   return l
 end
+
+function capitalize(x)
+  return
+    string.upper(string.sub(x, 1, 1)) ..
+    string.lower(string.sub(x, 2, string.len(x)))
+end
