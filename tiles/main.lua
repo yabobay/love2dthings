@@ -35,12 +35,14 @@ function love.draw()
 end
 
 function love.keypressed(key, code, rep)
-  -- switches on or off party mode
   if key == "space" then
+    -- loads a sprite at random
     loadPixels()
   elseif key == "p" then
+    -- switches on or off party mode
     if party then
       party = false
+      love.graphics.setColor(1,1,1) -- set color back to white
     else
       party = true
     end
