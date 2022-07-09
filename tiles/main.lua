@@ -15,17 +15,19 @@ function love.draw()
     pixelsize = columnsize / length(pixels[i])
     for j, y in pairs(x) do
       -- choose what color the pixel is
-      if y ~= 0 then -- white pixel
-        if party then
-          love.graphics.setColor (math.random(), math.random(), math.random())
-        else
-          love.graphics.setColor (1,1,1)
-        end
-      else -- black pixel
-        if party then
+      if party then
+        if y == 0 then
           love.graphics.setColor (math.random() / 10 , math.random() / 10, math.random() / 10)
         else
-          love.graphics.setColor(0,0,0)
+          love.graphics.setColor (math.random(), math.random(), math.random())
+        end
+      else
+        if y == 0 then
+          love.graphics.setColor (0,0,0)
+        elseif type(y) == "table" then
+          love.graphics.setColor (y[1], y[2], y[3])
+        else
+          love.graphics.setColor (1,1,1)
         end
       end
       -- actually draw the pixel

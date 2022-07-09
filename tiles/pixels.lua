@@ -1,4 +1,9 @@
 gallery = {
+  colordemo = {
+    {{1,0,0},{0,1,0},{0,0,1}},
+    {{1,1,0},{1,0,1},{1,1,1}},
+    {{0,1,1},{0,0,1},{252/255,50/255,148/255}}
+  },
   creeper = {
     {0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0},
@@ -176,15 +181,23 @@ function galleryRandom()
 end
 
 function loadPixels(x)
-  if not x then
-    while compareTables(choice, last) do
+  if x == nil then
+    if last ~= nil then
+      while compareTables(choice, last) do
+        choice = galleryRandom()
+      end
+    else
       choice = galleryRandom()
     end
+    love.window.setTitle(capitalize(choice[2]))
+    pixels = choice[1]
   else
-    choice = gallery[x]
+    --[[
+      bug: when specifying a specific sprite to switch to, there's no
+      window title. how sad.
+    ]]
+    pixels = gallery[x]
   end
-  pixels = choice[1]
-  love.window.setTitle(capitalize(choice[2]))
   columnsize = love.graphics.getWidth()
   rowsize = love.graphics.getHeight() / length(pixels)
   last = choice
