@@ -1,4 +1,4 @@
-function compareTables(x, y)
+function compare(x, y)
   if x == y then
     return true
   elseif x == nil or y == nil then
@@ -42,7 +42,7 @@ end
 function loadPixels(x)
   if x == nil then
     if last ~= nil then
-      while compareTables(choice, last) do
+      while compare(choice, last) do
         choice = galleryRandom()
       end
     else
