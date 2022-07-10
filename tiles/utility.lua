@@ -51,10 +51,7 @@ function loadPixels(x)
     love.window.setTitle(capitalize(choice[2]))
     pixels = choice[1]
   else
-    --[[
-      bug: when specifying a specific sprite to switch to, there's no
-      window title. how sad.
-    ]]
+    love.window.setTitle(capitalize(x))
     pixels = gallery[x]
   end
   columnsize = love.graphics.getWidth()
