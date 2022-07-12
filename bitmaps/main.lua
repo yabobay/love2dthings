@@ -1,5 +1,5 @@
-dofile("pixels.lua")
-dofile("utility.lua")
+dofile "pixels.lua"
+dofile "utility.lua"
 
 function love.load()
 
@@ -40,7 +40,7 @@ function love.draw()
   else
     love.graphics.setColor(1,1,1)
     love.graphics.print("Load sprite:", 10, 10)
-    love.graphics.print(search, 10, 50)
+    love.graphics.print(search .. "|", 10, 50)
   end
 end
 
