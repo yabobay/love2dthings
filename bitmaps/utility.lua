@@ -1,4 +1,4 @@
-function compare(x, y)
+function compare(x, y) -- compare two tables
   if x == y then
     return true
   elseif x == nil or y == nil then
@@ -13,7 +13,7 @@ function compare(x, y)
   end
 end
 
-function length(x)
+function length(x) -- length of table
   local l = 0
   for i in pairs(x) do
     l = l + 1
@@ -29,8 +29,8 @@ end
 
 
 function galleryRandom()
-  a = 1
-  b = math.random(length(gallery))
+  local a = 1
+  local b = math.random(length(gallery))
   for x, i in pairs(gallery) do
     if a == math.floor(b) then
       return {i, x}
@@ -39,9 +39,15 @@ function galleryRandom()
   end
 end
 
-function loadPixels(x)
+function loadPixels(x, fromGallery)
+
+  -- if a gallery isn't specified, just load the default one
+  local gallery = fromGallery or gallery
+
+  -- if a bitmap isn't specified, just load one randomly
   if x == nil then
     if last ~= nil then
+      -- but make sure we don't load the same thing twice
       while compare(choice, last) do
         choice = galleryRandom()
       end
@@ -50,11 +56,14 @@ function loadPixels(x)
     end
     love.window.setTitle(capitalize(choice[2]))
     pixels = choice[1]
+
   else
     love.window.setTitle(capitalize(x))
     pixels = gallery[x]
   end
+
   columnsize = love.graphics.getWidth()
   rowsize = love.graphics.getHeight() / length(pixels)
   last = choice
+
 end

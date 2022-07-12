@@ -61,15 +61,21 @@ function love.keypressed(key, code, rep)
       search = ""
     end
   else
-    if key == "backspace" then
+    if key == "backspace" then -- make backspace be backspace
       search = string.sub(search, 1, string.len(search) - 1)
-    elseif key == "return" then
-      searching = false
-      if gallery[search] then
-        loadPixels(search)
-      end
     elseif key == "escape" then
       searching = false
+    elseif key == "return" then
+      --[[
+        if there is a bitmap with the name asked by the user, then
+        load it. otherwise, tell them they're stupid.
+      --]]
+      if gallery[string.lower(search)] then
+        loadPixels(string.lower(search))
+      else
+        loadPixels("eror_sprite_not_found", EROR)
+      end
+      searching = false -- we're done searching
     end
   end
 end
