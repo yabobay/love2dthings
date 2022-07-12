@@ -10,7 +10,7 @@ function love.load()
 end
 
 function love.draw()
-  if not typing then
+  if not searching then
     -- "pixels" is the table with the pixel info in it
     for i, x in pairs(pixels) do
       pixelsize = columnsize / length(pixels[i])
@@ -45,7 +45,7 @@ function love.draw()
 end
 
 function love.keypressed(key, code, rep)
-  if not typing then
+  if not searching then
     if key == "space" then
       -- loads a sprite at random
       loadPixels()
@@ -57,25 +57,25 @@ function love.keypressed(key, code, rep)
         party = true
       end
     elseif key == "/" then
-      typing = true
+      searching = true
       search = ""
     end
   else
     if key == "backspace" then
       search = string.sub(search, 1, string.len(search) - 1)
     elseif key == "return" then
-      typing = false
+      searching = false
       if gallery[search] then
         loadPixels(search)
       end
     elseif key == "escape" then
-      typing = false
+      searching = false
     end
   end
 end
 
 function love.textinput(t)
-  if typing then
+  if searching then
     search = search .. t
   end
 end
