@@ -2,16 +2,13 @@ dofile "pixels.lua"
 dofile "utility.lua"
 
 function love.load()
-
   love.window.setMode(500, 500)
-  loadPixels()
-  party = false
-
+  loadPixels() -- load one bitmap at random from the ones we have
+  party = false -- PARTY MODE!!
 end
 
 function love.draw()
   if not searching then
-    -- "pixels" is the table with the pixel info in it
     for i, x in pairs(pixels) do
       pixelsize = columnsize / length(pixels[i])
       for j, y in pairs(x) do
@@ -37,7 +34,7 @@ function love.draw()
         )
       end
     end
-  else
+  else -- if searching
     love.graphics.setColor(1,1,1)
     love.graphics.print("Load sprite:", 10, 10)
     love.graphics.print(search .. "|", 10, 50)
@@ -60,7 +57,7 @@ function love.keypressed(key, code, rep)
       searching = true
       search = ""
     end
-  else
+  else -- if searching
     if key == "backspace" then -- make backspace be backspace
       search = string.sub(search, 1, string.len(search) - 1)
     elseif key == "escape" then

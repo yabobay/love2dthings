@@ -30,9 +30,9 @@ end
 
 function galleryRandom()
   local a = 1
-  local b = math.random(length(gallery))
+  local b = math.floor(math.random(length(gallery)))
   for x, i in pairs(gallery) do
-    if a == math.floor(b) then
+    if a == b then
       return {i, x}
     end
     a = a + 1
