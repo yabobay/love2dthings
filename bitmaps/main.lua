@@ -63,11 +63,14 @@ function love.keypressed(key, code, rep)
     elseif key == "escape" then
       searching = false
     elseif key == "return" then
+      -- if user says quit then quit
+      if string.lower(search) == "quit" then
+        love.event.quit()
       --[[
         if there is a bitmap with the name asked by the user, then
         load it. otherwise, tell them they're stupid.
       --]]
-      if gallery[string.lower(search)] then
+      elseif gallery[string.lower(search)] then
         loadPixels(string.lower(search))
       else
         loadPixels("eror_sprite_not_found", EROR)
