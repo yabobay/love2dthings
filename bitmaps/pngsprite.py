@@ -34,3 +34,5 @@ if len(args) > 1:
         image[x][len(image[x])-1].append(col)
 
   print(list2table(image))
+else:
+  print("\n u need to specify a file plz. :(\n")
